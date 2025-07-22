@@ -16,7 +16,9 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 24,
-    fontWeight: 'bold',
+     fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop: 20,
   },
 });
