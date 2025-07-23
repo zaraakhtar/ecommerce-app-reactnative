@@ -15,7 +15,7 @@ const HomeHeader = () => {
 }
 
 export default HomeHeader
-
+//this is the HomeHeader component that can be used in the HomeScreen or other components
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
