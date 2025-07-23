@@ -1,16 +1,14 @@
+import Wrapper from '@/components/ui/Wrapper';
 import { View, Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView>
-      <View>
+    <Wrapper>
       <Text style={styles.text}>
         Our home Screen
       </Text>
-    </View>
-    </SafeAreaView>
-    
+    </Wrapper>
   );
 }
 
