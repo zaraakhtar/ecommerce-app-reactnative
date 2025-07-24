@@ -1,24 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Platform, StyleSheet, View } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import Logo from './logo'
 
 const HomeHeader = () => {
   return (
-    <SafeAreaView>
-        <View>
-            <Text style={styles.wrapper}>
-                Home Header
-            </Text> 
-        </View>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Logo />
+      </View>
     </SafeAreaView>
   )
 }
 
 export default HomeHeader
-//this is the HomeHeader component that can be used in the HomeScreen or other components
 const styles = StyleSheet.create({
-    wrapper: {
-        flex: 1,
+    container: {
         backgroundColor: 'white',
+        marginTop: Platform.OS === 'android' ? 20 : 0,
     },
 })

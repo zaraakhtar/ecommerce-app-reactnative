@@ -1,7 +1,6 @@
-import { Platform, StyleSheet, Text, View } from 'react-native'
+import { Platform, StyleSheet, View } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { safelyDecodeURIComponent } from 'expo-router/build/fork/getStateFromPath-forks'
 
 const Wrapper = ({children}:{children:React.ReactNode}) => {
   return (
