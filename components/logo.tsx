@@ -12,6 +12,7 @@ const Logo = () => {
 }
 
 export default Logo
+// This component can be used in the HomeHeader or any other place where a logo is needed.
 
 const styles = StyleSheet.create({
     logoView: {
