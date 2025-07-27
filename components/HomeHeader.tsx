@@ -1,4 +1,4 @@
-import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Logo from "./logo";
@@ -32,6 +32,26 @@ const HomeHeader = () => {
               size={20}
               color={AppColors.primary[700]}
             />
+            <View style={styles.itemsView}>
+                <Text style={styles.itemsText}>
+                    0
+                </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.searchButton}
+            onPress={() => router.push("/(tabs)/Cart")}>
+        
+            <MaterialCommunityIcons
+              name="cart-outline"
+              size={20}
+              color={AppColors.primary[700]}
+            />
+            <View style={styles.itemsView}>
+                <Text style={styles.itemsText}>
+                    0
+                </Text>
+            </View>
           </TouchableOpacity>
         </View>
       </View>
@@ -71,5 +91,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: AppColors.primary[500],
     position: "relative",
+  },
+  itemsView:{
+    position: "absolute",
+    top: -5,
+    right: -5,
+    backgroundColor: AppColors.background.primary,
+    borderRadius: 50,
+    width: 16,
+    height: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: AppColors.primary[500],
+  },
+  itemsText: {
+    fontSize: 10,
+    color: AppColors.accent[500],
+    fontWeight: 800,
   },
 });
