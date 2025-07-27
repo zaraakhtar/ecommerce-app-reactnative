@@ -8,7 +8,7 @@ const shopScreen = () => {
     <SafeAreaView>
       <HomeHeader />
       <View>
-        <Text style={styles.Heading}>Shop Screen</Text>
+        <Text>Shop Screen</Text>
       </View>
     </SafeAreaView>
   );
@@ -17,10 +17,4 @@ const shopScreen = () => {
 export default shopScreen;
 
 const styles = StyleSheet.create({
-  Heading: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginTop: 20,
-  },
 });

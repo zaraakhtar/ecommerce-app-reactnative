@@ -3,7 +3,7 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Logo from "./logo";
 import AppColors from "@/constants/Colors";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
 const HomeHeader = () => {
@@ -15,10 +15,20 @@ const HomeHeader = () => {
         <View style={styles.iconContainer}>
           <TouchableOpacity
             style={styles.searchButton}
-            onPress={() => router.push("/")}
+            onPress={() => router.push("/(tabs)/Search")}
           >
             <AntDesign
               name="search1"
+              size={20}
+              color={AppColors.primary[700]}
+            />
+          </TouchableOpacity>
+           <TouchableOpacity
+            style={styles.searchButton}
+            onPress={() => router.push("/(tabs)/Favorites")}>
+        
+            <MaterialCommunityIcons
+              name="heart-outline"
               size={20}
               color={AppColors.primary[700]}
             />
