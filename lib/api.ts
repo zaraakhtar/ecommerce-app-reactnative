@@ -1,8 +1,7 @@
 import { Product } from '../node_modules/type';
 
 const API_URL = "https://fakestoreapi.com"
-
-//get all products
+//API_URL is the base URL for the API endpoint
 const getProducts = async(): Promise<Product[]> => {
     try{
         const response = await fetch(`${API_URL}/products`);
