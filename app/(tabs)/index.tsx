@@ -4,7 +4,8 @@ import Wrapper from '@/components/ui/Wrapper';
 import { useProductStore } from '@/store/productStore';
 import { Product } from '@/type';
 import { useEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
@@ -24,6 +25,17 @@ useEffect(() => {
       <Wrapper>
         <LoadingSpinner fullScreen />
       </Wrapper>
+    );
+  }
+  if (error) {
+    return (
+      <SafeAreaView>
+        <View>
+          <Text>
+            Error: {error}
+          </Text>
+        </View>
+      </SafeAreaView>
     );
   }
   return (
