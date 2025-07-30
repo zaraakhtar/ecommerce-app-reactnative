@@ -1,4 +1,4 @@
-import { Product } from '../node_modules/type';
+import { Product } from '@/type';
 
 const API_URL = "https://fakestoreapi.com"
 
