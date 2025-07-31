@@ -15,7 +15,7 @@ interface ProductState {
   fetchProducts: () => Promise<void>;
   fetchCategories: () => Promise<void>;
 }
-
+// Zustand store for managing product data in the application
 export const useProductStore = create<ProductState>()(
   persist(
     (set, get) => ({
