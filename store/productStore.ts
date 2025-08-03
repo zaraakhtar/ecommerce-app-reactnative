@@ -15,7 +15,7 @@ interface ProductState {
   fetchProducts: () => Promise<void>;
   fetchCategories: () => Promise<void>;
 }
-
+//this is use product store api
 export const useProductStore = create<ProductState>()(
   persist(
     (set, get) => ({
