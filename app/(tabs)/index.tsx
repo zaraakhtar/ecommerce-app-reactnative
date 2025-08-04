@@ -1,33 +1,49 @@
-import HomeHeader from '@/components/HomeHeader';
-import LoadingSpinner from '@/components/loadingSpinner';
-import Wrapper from '@/components/ui/Wrapper';
-import AppColors from '@/constants/Colors';
-import { useProductStore } from '@/store/productStore';
-import { Product } from '@/type';
-import { AntDesign } from '@expo/vector-icons';
-import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { ScrollView } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import HomeHeader from "@/components/HomeHeader";
+import LoadingSpinner from "@/components/loadingSpinner";
+import Wrapper from "@/components/ui/Wrapper";
+import AppColors from "@/constants/Colors";
+import { useProductStore } from "@/store/productStore";
+import { Product } from "@/type";
+import { AntDesign } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import { use, useEffect, useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
+  const router = useRouter();
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
-  const { products, categories, loading, error, fetchProducts, fetchCategories } = useProductStore();
-useEffect(() => {
-  fetchProducts();
-  fetchCategories();
-}, []);
-useEffect(() => {
-  if (products.length > 0) {
-    const reverseProducts = [...products].reverse();
-    setFeaturedProducts(reverseProducts as Product[]);
-  }
-}, [products]);
-  if (loading ) {
+  const {
+    products,
+    categories,
+    loading,
+    error,
+    fetchProducts,
+    fetchCategories,
+  } = useProductStore();
+  useEffect(() => {
+    fetchProducts();
+    fetchCategories();
+  }, []);
+  useEffect(() => {
+    if (products.length > 0) {
+      const reverseProducts = [...products].reverse();
+      setFeaturedProducts(reverseProducts as Product[]);
+    }
+  }, [products]);
+
+  const navigateToCategory = (category: string) => {
+   router.push({
+    pathname: "/(tabs)/shop",
+    params: { category: category },
+   });
+  };
+  if (loading) {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.errorContainer}>
-          <LoadingSpinner fullScreen/>
+          <LoadingSpinner fullScreen />
         </View>
       </SafeAreaView>
     );
@@ -36,9 +52,7 @@ useEffect(() => {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.errorContainer}>
-          <Text style={styles.errorText}>
-            Error: {error}
-          </Text>
+          <Text style={styles.errorText}>Error: {error}</Text>
         </View>
       </SafeAreaView>
     );
@@ -47,16 +61,29 @@ useEffect(() => {
     <View style={styles.wrapper}>
       <HomeHeader />
       <View style={styles.contentContainer}>
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainerView}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContainerView}
+        >
           <View style={styles.categoriesSection}>
             <View style={styles.sectionHeader}>
               <Text style={styles.sectionTitle}>Categories</Text>
             </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               {categories.map((category) => (
-                <TouchableOpacity key={category}>
-                  <AntDesign name='tag' size={16} color={AppColors.primary[500]} />
-                  <Text style={styles.categoryButton}>{category.charAt(0).toUpperCase() + category.slice(1)}</Text>
+                <TouchableOpacity
+                  style={styles.categoryButton}
+                  onPress={() => navigateToCategory(category)}
+                  key={category}
+                >
+                  <AntDesign
+                    name="tag"
+                    size={16}
+                    color={AppColors.primary[500]}
+                  />
+                  <Text style={styles.categoryText}>
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </Text>
                 </TouchableOpacity>
               ))}
             </ScrollView>
@@ -69,7 +96,7 @@ useEffect(() => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     flex: 1,
   },
   container: {
@@ -78,16 +105,16 @@ const styles = StyleSheet.create({
   },
   errorContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     padding: 24,
   },
   errorText: {
-    fontFamily: 'Inter_Medium',
+    fontFamily: "Inter_Medium",
     fontSize: 16,
   },
   contentContainer: {
-    paddingHorizontal: 20,
+    paddingLeft: 20,
   },
   scrollContainerView: {
     paddingBottom: 300,
@@ -97,15 +124,25 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   sectionHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 16,
   },
   categoryButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     backgroundColor: AppColors.background.secondary,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    minWidth: 100,
+    marginLeft: 5,
   },
-  sectionTitle:{},
+  sectionTitle: {
+    fontFamily: "Inter-semiBold",
+    fontSize: 18,
+    color: AppColors.text.primary,
+  },
+  categoryText: {},
 });
