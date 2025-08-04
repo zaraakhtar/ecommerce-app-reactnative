@@ -4,8 +4,9 @@ import Wrapper from '@/components/ui/Wrapper';
 import AppColors from '@/constants/Colors';
 import { useProductStore } from '@/store/productStore';
 import { Product } from '@/type';
+import { AntDesign } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -46,11 +47,19 @@ useEffect(() => {
     <View style={styles.wrapper}>
       <HomeHeader />
       <View style={styles.contentContainer}>
-        <ScrollView>
-          <View>
-            <View>
-              <Text>Categories</Text>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainerView}>
+          <View style={styles.categoriesSection}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>Categories</Text>
             </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              {categories.map((category) => (
+                <TouchableOpacity key={category}>
+                  <AntDesign name='tag' size={16} color={AppColors.primary[500]} />
+                  <Text style={styles.categoryButton}>{category.charAt(0).toUpperCase() + category.slice(1)}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
           </View>
         </ScrollView>
       </View>
@@ -77,5 +86,26 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter_Medium',
     fontSize: 16,
   },
-  contentContainer: {},
+  contentContainer: {
+    paddingHorizontal: 20,
+  },
+  scrollContainerView: {
+    paddingBottom: 300,
+  },
+  categoriesSection: {
+    marginTop: 10,
+    marginBottom: 16,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  categoryButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: AppColors.background.secondary,
+  },
+  sectionTitle:{},
 });
