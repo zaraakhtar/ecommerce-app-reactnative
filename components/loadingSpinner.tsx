@@ -16,10 +16,12 @@ const loadingSpinner: React.FC<loadingSpinnerProps> = ({
   fullScreen = false,
 }) => {
   if (fullScreen) {
-    <View style={styles.fullScreen}>
-      <ActivityIndicator size={size} color={color} />
-      {text && <Text style={styles.text}>{text}</Text>}
-    </View>;
+    return (
+      <View style={styles.fullScreen}>
+        <ActivityIndicator size={size} color={color} />
+        {text && <Text style={styles.text}>{text}</Text>}
+      </View>
+    );
   }
   return (
     <View style={styles.fullScreen}>
