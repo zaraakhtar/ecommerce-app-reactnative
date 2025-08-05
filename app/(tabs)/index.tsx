@@ -1,15 +1,15 @@
 import HomeHeader from "@/components/HomeHeader";
 import LoadingSpinner from "@/components/loadingSpinner";
-import Wrapper from "@/components/ui/Wrapper";
+import ProductCard from "@/components/ui/ProductCard";
 import AppColors from "@/constants/Colors";
 import { useProductStore } from "@/store/productStore";
 import { Product } from "@/type";
 import { AntDesign } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { use, useEffect, useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -97,6 +97,16 @@ export default function HomeScreen() {
                 </Text>
               </TouchableOpacity>
             </View>
+            <FlatList data={featuredProducts} keyExtractor={(item) => item.id.toString()}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.featuredProductsContainer}
+              renderItem={({ item }) => (
+                <View style={styles.featuredProductsContainer}>
+                  <ProductCard product={item} compact />
+                </View>
+              )}
+            />
           </View>
         </ScrollView>
       </View>
@@ -155,6 +165,19 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: AppColors.text.primary,
   },
-  categoryText: {},
-  seeAllText:{},
+  categoryText: {
+    fontFamily: "Inter_Medium",
+    fontSize: 14,
+    color: AppColors.text.primary,
+    marginLeft: 8,
+  },
+  seeAllText: {
+    fontFamily: "Inter_Medium",
+    fontSize: 14,
+    color: AppColors.text.secondary,
+  },
+  featuredProductsContainer: {
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+  },
 });
