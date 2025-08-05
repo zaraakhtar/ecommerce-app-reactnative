@@ -88,6 +88,16 @@ export default function HomeScreen() {
               ))}
             </ScrollView>
           </View>
+          <View >
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>Featured Products</Text>
+              <TouchableOpacity>
+                <Text style={styles.seeAllText}>
+                  See All
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </ScrollView>
       </View>
     </View>
@@ -128,6 +138,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 16,
+    paddingRight: 20,
   },
   categoryButton: {
     flexDirection: "row",
@@ -145,4 +156,5 @@ const styles = StyleSheet.create({
     color: AppColors.text.primary,
   },
   categoryText: {},
+  seeAllText:{},
 });
