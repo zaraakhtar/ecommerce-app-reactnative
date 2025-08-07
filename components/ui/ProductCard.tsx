@@ -16,7 +16,7 @@ const ProductCard:React.FC<ProductCardProps> = ({ product, compact=false, custom
     </View>
   )
 }
-// This component is a placeholder for the ProductCard.
+
 export default ProductCard
 
 const styles = StyleSheet.create({})
