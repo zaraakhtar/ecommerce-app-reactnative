@@ -1,4 +1,4 @@
-import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
+import { StyleProp, StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
 import React from 'react'
 import { StyleProps } from 'react-native-reanimated';
 import { Product } from '@/type';
@@ -11,12 +11,15 @@ interface ProductCardProps {
 
 const ProductCard:React.FC<ProductCardProps> = ({ product, compact=false, customStyle }) => {
   return (
-    <View>
+    <TouchableOpacity style={[styles.card, compact && styles.compactCard, customStyle]}>
       <Text>ProductCard</Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 
 export default ProductCard
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    compactCard:{},
+    card:{},
+})
