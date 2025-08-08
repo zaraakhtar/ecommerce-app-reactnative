@@ -88,7 +88,7 @@ export default function HomeScreen() {
               ))}
             </ScrollView>
           </View>
-          <View >
+          <View style={styles.featuredSection}>
             <View style={styles.sectionHeader}>
               <Text style={styles.sectionTitle}>Featured Products</Text>
               <TouchableOpacity>
@@ -180,4 +180,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 12,
   },
+  featuredSection: {
+    marginVertical: 16,
+  }
 });
