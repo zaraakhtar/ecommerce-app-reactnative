@@ -58,7 +58,7 @@ const HomeHeader = () => {
     </SafeAreaView>
   );
 };
-
+//styles for home header
 export default HomeHeader;
 const styles = StyleSheet.create({
   container: {
