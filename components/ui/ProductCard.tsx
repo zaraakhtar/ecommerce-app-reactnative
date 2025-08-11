@@ -50,7 +50,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     </TouchableOpacity>
   );
 };
-
+//this is the ProductCard component
 export default ProductCard;
 
 const styles = StyleSheet.create({
